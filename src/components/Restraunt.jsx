@@ -13,13 +13,22 @@ const Restraunt = () => {
   const [search, setSearch] = useState("");
   const itemPerPage = 7;
   const [totalData, setTotalData] = useState(data1);
+  console.log(totalData)
+  console.log(totalData.length)
   
 
   const indexOfLastItem = page * itemPerPage;
-  
+  console.log("indexOfLastItem"+" "+indexOfLastItem)
   const indexOfFirstItem = indexOfLastItem - itemPerPage;
+  console.log("indexOfFirstItem"+" "+indexOfFirstItem)
+  const firstIn=indexOfFirstItem>=totalData.length?0:indexOfFirstItem;
+  console.log("firstIn"+" "+firstIn)
+  const lastIn=indexOfLastItem && indexOfFirstItem>=totalData.length?7:indexOfLastItem;
+  console.log("lastIn"+" "+lastIn)
   
-  const currentItems = totalData.slice(indexOfFirstItem>=totalData.length?0:indexOfFirstItem, indexOfLastItem>=totalData.length?indexOfFirstItem+7:indexOfLastItem);
+  const currentItems = totalData.slice(firstIn, lastIn);
+  console.log("current "+ " "+currentItems.length)
+  console.log(currentItems)
  
 
   
@@ -47,11 +56,7 @@ const Restraunt = () => {
       </div>
 
       <div className={styles.container}>
-        {currentItems
-          .filter((card) => {
-            return card.name.toLowerCase().includes(search.toLowerCase());
-          })
-          .map((data) => {
+        {currentItems.map((data) => {
             return <RestrantCard {...data} key={data._id.$oid}/>;
           })}
       </div>
