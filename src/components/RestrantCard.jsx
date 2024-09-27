@@ -7,7 +7,7 @@ const RestrantCard = (data) => {
   // console.log(Math.floor(data.rating));
 
   return (
-    <div>
+    <div key={data._id.$oid}>
       <div className={styles.card}>
         <div className={styles.resName}>
           <h3> {data.name}</h3>

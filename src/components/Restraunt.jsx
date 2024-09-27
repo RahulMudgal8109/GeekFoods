@@ -4,24 +4,30 @@ import RestrantCard from "./RestrantCard.jsx";
 import styles from "./../css/Restraunt.module.css";
 
 const Restraunt = () => {
-  // console.log(data1);
+ 
+
   const [page, setPage] = useState(1);
-  const [search, setSearch] = useState("");
-  const itemPerPage = 7;
-  const [totalData, setTotalData] = useState(data1);
-  console.log(totalData);
-
-  const indexOfLastItem = page * itemPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemPerPage;
-  const currentItems = totalData.slice(indexOfFirstItem, indexOfLastItem);
-
   const paginate = (pageNo) => {
     setPage(pageNo);
   };
+  const [search, setSearch] = useState("");
+  const itemPerPage = 7;
+  const [totalData, setTotalData] = useState(data1);
+  
+
+  const indexOfLastItem = page * itemPerPage;
+  
+  const indexOfFirstItem = indexOfLastItem - itemPerPage;
+  
+  const currentItems = totalData.slice(indexOfFirstItem>=totalData.length?0:indexOfFirstItem, indexOfLastItem>=totalData.length?indexOfFirstItem+7:indexOfLastItem);
+ 
+
+  
   const filterData = (value) => {
     const data=data1;
    
-    setTotalData( data.filter((card)=>{
+   
+    setTotalData(data.filter((card)=>{
       return card.name.toLowerCase().includes(value.toLowerCase());
 
     }))
@@ -46,7 +52,7 @@ const Restraunt = () => {
             return card.name.toLowerCase().includes(search.toLowerCase());
           })
           .map((data) => {
-            return <RestrantCard {...data} />;
+            return <RestrantCard {...data} key={data._id.$oid}/>;
           })}
       </div>
       <div className={styles.pagination}>
@@ -60,7 +66,7 @@ const Restraunt = () => {
                 key={index}
                 onClick={() => {
                   paginate(index + 1);
-                  setSearch("");
+                  // setSearch("");
                 }}
               >
                 {index + 1}
