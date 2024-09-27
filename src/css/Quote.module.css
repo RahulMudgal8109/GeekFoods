@@ -1,0 +1,18 @@
+.quote
+{
+    font-size: 30px;
+    font-weight: 700;
+}
+.card
+{
+    width: 80vw;
+    padding: 30px;
+    border: 1px solid rgb(202, 202, 202);
+    margin: 60px;
+    border-radius: 10px;
+}
+.author
+{
+    font-size: 20px;
+    font-weight: lighter;
+}

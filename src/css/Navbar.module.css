@@ -1,0 +1,48 @@
+.navbar
+{
+    position: fixed;
+    width: 100vw;
+    height: 60px;
+    top: 0;
+    left: 0%;
+    padding: 20px;
+    border: 0.5px solid rgb(238, 236, 236);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    overflow-y: hidden;
+    z-index: 20;
+    background-color: white;
+}
+.navbar-scroll {
+    background-color: #333; /* Set your desired background color */
+    padding: 15px; /* Set your desired padding */
+    /* Add additional styles for the scrolled state */
+  }
+
+.icon
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menus{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.menu{
+    list-style-type:none;
+    margin: 5px;
+    
+}
+.black
+{
+    color: black;
+}
+.button button{
+    background-color: rgb(118, 118, 226);
+    color: white;
+}
